@@ -200,7 +200,6 @@ def cart():
         return render_template("cart.html")
     return redirect(url_for('login'))
 
-
 @app.route("/revenue2")
 def get_dataa2():
     cnx=mysql.connection.cursor()
@@ -212,7 +211,7 @@ AND YEAR(o.O_Date) = 2022
 AND MONTH(o.O_Date) =12
 AND pc.Cat_ID = 3
 GROUP BY o.O_Date;''')
-    data=[{'O_Date':i[0],'grand_total':i[1]} for i in cnx.fetchall()]
+    data=[{'1: O_Date':i[0],'2: Total_Revenue':i[1]} for i in cnx.fetchall()]
     cnx.close()
     print(data)
     return jsonify(data)
@@ -225,7 +224,7 @@ FROM Category, N_Product,orders
 where Category.Cat_ID = N_Product.Cat_ID
 and N_Product.NP_ID = orders.P_ID
 GROUP BY Cat_Name,pname WITH ROLLUP;''')
-    data=[{'Cat_Name':i[0],'pname':i[1],'Total_Revenue':i[2]} for i in cnx.fetchall()]
+    data=[{'1: Cat_Name':i[0],'2: pname':i[1],'3: Total_Revenue':i[2]} for i in cnx.fetchall()]
     cnx.close()
     print(data)
     return jsonify(data)
@@ -252,7 +251,7 @@ where o.P_ID = p.NP_id
 AND p.Cat_ID = pc.Cat_ID
 GROUP BY pc.Cat_ID
 order by pc.Cat_ID;''')
-    data=[{'id':i[0],'name':i[1]} for i in cnx.fetchall()] # need to edit this to meet requirment
+    data=[{'1: CAT_ID':i[0],'2: January_Revenue':i[1],'3: February_Revenue':i[2],'4: March_Revenue':i[3],'5: April_Revenue':i[4],'6: May_Revenue':i[5],'7: June_Revenue':i[6],'8: July_Revenue':i[7],'9: August_Revenue':i[8],'9A: September_Revenue':i[9],'9B: October_Revenue':i[10],'9C: November_Revenue':i[11],'9D: December_Revenue':i[12]} for i in cnx.fetchall()] # need to edit this to meet requirment
     cnx.close()
     # print(data)
     return jsonify(data)
@@ -264,10 +263,12 @@ def get_dataa4():
 FROM orders
 GROUP BY YEAR(O_Date), QUARTER(O_Date) with rollup
 order by YEAR(O_Date);''')
-    data=[{'Cat_Name':i[0],'pname':i[1],} for i in cnx.fetchall()]
+    data=[{'1: YEAR':i[0],'2: QUARTER':i[1],'3: Total_Revenue':i[2]} for i in cnx.fetchall()]
     cnx.close()
     print(data)
     return jsonify(data)
+
+
 
 
 if __name__ == '__main__':
