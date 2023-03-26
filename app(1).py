@@ -4,6 +4,8 @@ from flask_mysqldb import MySQL
 import MySQLdb.cursors
 import re
 import json
+import time    
+import random
 app=Flask(__name__)
 
 app.secret_key = "falana"
@@ -117,13 +119,12 @@ def product(id):
 def atc(id):
     if 'loggedin' in session:
         if request.method == 'POST' and 'quantity' in request.form:
-            c_id=id
             quantity = request.form['quantity']
-            print(c_id)
-            cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-            cursor.execute('SELECT * FROM customer where email = % s and password = % s', (session["c_id"],c_id, quantity, ))
-            account = cursor.fetchone()
-            return redirect(url_for('home.html'))
+            cnx=mysql.connection.cursor()
+            cnx.execute("INSERT INTO cart (C_ID, P_ID, Quantity) VALUES (%s, %s, %s);",(session['c_id'],id,quantity,))
+            mysql.connection.commit()
+            print(cnx.fetchall())
+            return redirect("/home")
     return redirect(url_for('login.html'))
 
 @app.route("/purchase")#todo
@@ -167,7 +168,8 @@ def get_data2():
     cnx.close()
     print(data)
     return jsonify(data)
-@app.route("/cartdata2")
+
+@app.route("/cartdata2",methods= ["GET", "POST"])
 def get_data3():
     cnx=mysql.connection.cursor()
     cnx.execute("select c.C_ID, SUM(p.Price * c.Quantity) AS Grand_Total FROM cart c,N_Product p where c.P_ID = p.nP_ID and c.C_ID = %s GROUP BY c.C_ID",(session["c_id"],))
@@ -175,12 +177,25 @@ def get_data3():
     cnx.close()
     print(data)
     return jsonify(data)
-@app.route("/cart")
+
+@app.route("/cart",methods= ["POST","GET"])
 def cart():
     if 'loggedin' in session:
         if request.method == 'POST':
             cnx=mysql.connection.cursor()
-            cnx.execute("")
+            cnx.execute("select c.C_ID, p.nP_ID, p.PName, p.Price, c.Quantity, (p.Price * c.Quantity) AS Total_Price FROM cart c,N_Product p where c.P_ID = p.nP_ID and c.C_ID = %s",(session["c_id"],))
+            # print(cnx.fetchall())
+            data=[{'c_id':i[0],'np_id':i[1],'product_name':i[2],'product_price':i[3],'product_quantity':i[4],'total_price':i[5]} for i in cnx.fetchall()]
+            cnx.execute("select c.C_ID, SUM(p.Price * c.Quantity) AS Grand_Total FROM cart c,N_Product p where c.P_ID = p.nP_ID and c.C_ID = %s GROUP BY c.C_ID",(session["c_id"],))
+            data2=[{'c_id':i[0],'grand_total':i[1]} for i in cnx.fetchall()]
+            print(data)
+            for i in data:
+                cnx.execute("select max(o_id) from orders")
+                m = [i[0] for i in cnx.fetchall()]
+                cnx.execute("INSERT INTO orders(O_ID, O_date, O_price, C_ID, P_ID, A_ID,PAY_ID) VALUES (%s, CURRENT_DATE(), %s,%s,%s,2,0);",(m[0] + 1,data2[0]['grand_total'],session['c_id'],i['np_id'],))
+                mysql.connection.commit()
+            # print(cnx.fetchall())
+            return redirect("/home")
             return render_template("home.html")
         return render_template("cart.html")
     return redirect(url_for('login'))
@@ -253,7 +268,6 @@ order by YEAR(O_Date);''')
     cnx.close()
     print(data)
     return jsonify(data)
-
 
 
 if __name__ == '__main__':
