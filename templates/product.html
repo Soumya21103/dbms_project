@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>your product has been added to cart</p><br>
+    <form  action="/addtocart/{{id | safe}}" method="post" >
+        <label>quantity</label>
+        <input type="number" name="quantity" id="form3Example3" class="form-control" />
+        <button type="submit">add to cart</button>
+    </form>
+    <a href="/home">return to home?</a>
+    <script>
+
+    </script>
+</body>
+
+</html>

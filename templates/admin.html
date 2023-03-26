@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, th, td {
+           border: 1px solid black;
+           border-collapse: collapse; 
+        }
+        td, th {
+           padding: 10px;
+        }
+     </style>
+</head>
+<body>
+    <h2>Convert JSON data into a html table using Javascript</h2>
+   <p>Click the following button to convert JSON results into HTML table</p><br>
+   <button id="btn" onclick="convert('/revenue2' )"> Click Here </button> <br>
+   
+
+   <h2>Convert JSON data into a html table using Javascript</h2>
+   <p>Click the following button to convert JSON results into HTML table</p><br>
+   <button id="btn" onclick="convert('/revenue3' )"> Click Here </button> <br>
+   
+
+   <h2>Convert JSON data into a html table using Javascript</h2>
+   <p>Click the following button to convert JSON results into HTML table</p><br>
+   <button id="btn" onclick="convert('/revenuecat' )"> Click Here </button> <br>
+   
+
+   <h2>Convert JSON data into a html table using Javascript</h2>
+   <p>Click the following button to convert JSON results into HTML table</p><br>
+   <button id="btn" onclick="convert( '/revenueq')"> Click Here </button> <br>
+   <h3> Resulting Table: </h3>
+   <div id="container"></div>
+   <script src="{{url_for('static', filename='admin.js')}}" ></script>
+</body>
+</html>

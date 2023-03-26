@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+
+</head>
+
+<body>
+    <style>
+        body {
+            /* margin-top: 20px; */
+            background: #eee;
+        }
+
+        .img-fluid {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .height-5x {
+            height: 3rem !important;
+        }
+
+        .width-5x {
+            width: 3rem !important;
+        }
+
+        .flex-center {
+            justify-content: center !important;
+        }
+
+        .flex-center {
+            align-items: center !important;
+        }
+
+        .rounded-circle {
+            border-radius: 50% !important;
+        }
+
+        .align-items-center {
+            align-items: center !important;
+        }
+
+        .flex-grow-1 {
+            flex-grow: 1 !important;
+        }
+
+        .d-flex {
+            display: flex !important;
+        }
+
+        .position-relative {
+            position: relative !important;
+        }
+
+        .shadow-sm {
+            box-shadow: 0 .125rem .25rem rgba(13, 15, 12, .075) !important;
+        }
+
+        .ms-n3 {
+            margin-left: -1rem !important;
+        }
+    </style>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <div class=""><i class="fas fa-bars"></i></div>
+            <a class="navbar-brand" href="#">RICHFLEX</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cart">Cart</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Category
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <!-- <div class=" container d-flex justify-content-center">     
+        <ul class="pagination shadow-lg">
+            <li class="page-item "><a class="page-link" href="#"><i class="fa fa-home "></i> <small>Home</small>  </a></li>
+            <li class="page-item "><a class="page-link " href="#"><i class="fa fa-file  mr-1  ml-0"></i><small>Files &nbsp; </small></a></li>                 
+            <li class="page-item "><a class="page-link" href="#"><i  class="fa fa-image mr-1"></i><small>Image</small></a></li>                         
+            <li class="page-item  "><a class="page-link" href="#"><i  class="fa fa-video-camera mr-1"></i><small>Videos</small></a></li>                        
+            <li class="page-item  active "><a class="page-link " href="#"><i  class="fa fa-music mr-1 "></i><small>Music</small></a></li>  
+        </ul> 
+    </div> -->
+    <section class="container">
+        <div class="my-5 display-5 fw-bold text-center ls-tight" style="color: hsl(126, 92%, 19%)">
+            <h1>Categories</h1>
+        </div>
+    
+    <div class="container py-3">
+        <div id="cat-container"  class="row mb-4">
+            <!-- <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card hover-lift hover-shadow-xl shadow-sm border-0">
+                   
+                    <div class="card-body p-4">
+                        <h5>Category 1</h5>
+                        <p class="mb-0 text-muted">124 Jobs opportunities</p>
+                    </div>
+                    
+                    <a href="#!" class="stretched-link"></a>
+                </div>
+            </div>
+
+
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card hover-lift hover-shadow-xl shadow-sm border-0">
+                   
+                    <div class="card-body p-4">
+                        <h5>UI Designer</h5>
+                        <p class="mb-0 text-muted">76 Jobs opportunities</p>
+                    </div>
+                    
+                    <a href="#!" class="stretched-link"></a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card hover-lift hover-shadow-xl shadow-sm border-0">
+                   
+                    <div class="card-body p-4">
+                        <h5>Software Engineer</h5>
+                        <p class="mb-0 text-muted">54 Jobs opportunities</p>
+                    </div>
+                    
+                    <a href="#!" class="stretched-link"></a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card hover-lift hover-shadow-xl shadow-sm border-0">
+                  
+                    <div class="card-body p-4">
+                        <h5>Sales &amp; Marketing</h5>
+                        <p class="mb-0 text-muted">28 Jobs opportunities</p>
+                    </div>
+                    
+                    <a href="#!" class="stretched-link"></a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card hover-lift hover-shadow-xl shadow-sm border-0">
+                   
+                    <div class="card-body p-4">
+                        <div class="d-flex mb-4 align-items-center">
+
+                           
+                            <div class="flex-grow-1 d-flex align-items-center">
+                               
+                                <div
+                                    class="width-5x height-5x p-2 bg-white shadow-sm position-relative flex-center rounded-circle border">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="img-fluid"
+                                        alt="">
+                                </div>
+                                
+                                <div
+                                    class="width-5x height-5x p-2 ms-n3 bg-white shadow-sm position-relative flex-center rounded-circle border">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar2.png" class="img-fluid"
+                                        alt="">
+                                </div>
+                                <div
+                                    class="width-5x height-5x p-2 ms-n3 bg-white shadow-sm position-relative flex-center rounded-circle border">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar3.png" class="img-fluid"
+                                        alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <h5>Data Science</h5>
+                        <p class="mb-0 text-muted">14 Jobs opportunities</p>
+                    </div>
+                    <a href="#!" class="stretched-link"></a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card hover-lift hover-shadow-xl shadow-sm border-0">
+                
+                    <div class="card-body p-4">
+                        <div class="d-flex mb-4 align-items-center">-->
+
+        </div> 
+    </div>
+</section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <script src="{{url_for('static', filename='home.js')}}"></script>
+</body>
+
+</html>
