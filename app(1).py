@@ -127,6 +127,19 @@ def atc(id):
             return redirect("/home")
     return redirect(url_for('login.html'))
 
+
+@app.route("/additem", methods =['GET', 'POST'])
+def ati():
+    if 'loggedin' in session:
+        if request.method == 'POST' and 'quantity' in request.form and 'pname' in request.form and 'ptype' in request.form and 'price' in request.form and 'desc_type' in request.form and 'desc_DOM' in  request.form and 'R_id' in  request.form and 'cat_id' in  request.form:
+            cnx=mysql.connection.cursor()
+            cnx.execute("select max(NP_id) from N_Product")
+            m = [i[0] for i in cnx.fetchall()]
+            cnx.execute("INSERT INTO N_Product (NP_id, Pname, Ptype ,price ,quantity ,desc_type ,desc_DOM, A_ID ,R_id ,cat_id) VALUES (%s, %s, %s, %s,%s, %s, %s,%s, %s, %s);",(m[0] + 1,request.form['pname'],request.form['ptype'],request.form['price'],request.form['quantity'],request.form['desc_type'],request.form['desc_DOM'],str(session['a_id']),request.form['R_id'],request.form['cat_id'],))
+            mysql.connection.commit()
+            print(cnx.fetchall())
+    return render_template('additem.html')
+
 @app.route("/purchase")#todo
 def purchase():
     if 'loggedin' in session:
@@ -196,7 +209,6 @@ def cart():
                 mysql.connection.commit()
             # print(cnx.fetchall())
             return redirect("/home")
-            return render_template("home.html")
         return render_template("cart.html")
     return redirect(url_for('login'))
 

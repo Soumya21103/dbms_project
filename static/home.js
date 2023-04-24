@@ -13,13 +13,7 @@ const categoryRedirect = (data) => {
   body: dat,
   
 })
-//   .then((response) => response.json())
-//   .then((data) => {
-//     console.log("Success:", data);
-//   })
-//   .catch((error) => {
-//     console.error("Error:", error);
-//   });
+;
 window.location = "/productdata?&c_id="+a;  
 }
 
@@ -28,7 +22,6 @@ const categoryTemplate = (cat_name,cat_id) => {
     root.className = "col-lg-4 col-md-6 mb-4";
     root.setAttribute('cat_id',cat_id);
     root.setAttribute('cat_name',cat_name);
-    // root.onclick = () => {categoryRedirect(root)};
     const in1 = [];
     for (let index = 0; index < 2; index++) {
         in1.push(document.createElement('div'));
