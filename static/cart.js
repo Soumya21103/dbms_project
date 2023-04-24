@@ -17,7 +17,7 @@ const productTemplate = (obj) => {
     elem[6].innerHTML = "<h5 class=\"fw-normal mb-0\">"+obj["product_quantity"]+"</h5>";
     elem[5].appendChild(elem[6]);elem[5].appendChild(elem[7]);
     elem[4].innerHTML = "<h5>"+obj["product_name"]+"</h5><p class=\"small mb-0\">Rs. "+obj["product_price"]+"</p>";
-    elem[3].innerHTML = "<img src=\"https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img1.webp\" class=\"img-fluid rounded-3\" alt=\"Shopping item\" style=\"width: 65px;\">";
+    elem[3].innerHTML = "<img src=\"{{url_for('static', filename='logo.jpeg')}}\" class=\"img-fluid rounded-3\" alt=\"Shopping item\" style=\"width: 65px;\">";
     elem[2].appendChild(elem[3]); elem[2].appendChild(elem[4]);
     elem[1].appendChild(elem[2]); elem[1].appendChild(elem[5]); elem[0].appendChild(elem[1]);
     root.appendChild(elem[0]);
